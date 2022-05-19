@@ -9,12 +9,23 @@
         <div class="col-xl-6">
           <h1>Snacks List</h1>
           {% for snack in snack_list %}
-
+          
           <p>
-              <a href="{% url 'detail_snack' pk=snack.pk %}">{{snack.title}}</a>
+            <a href="{% url 'detail_snack' pk=snack.pk %}">{{snack.title}}</a>
+            <a href="/update/{{snack.pk}}" class="btn-get-started scrollto">Update</a>
+            <a href="/delete/{{snack.pk}}" class="btn-get-started scrollto">Delete</a>
+
+
           </p>
           
           {% endfor %}
+        </div>
+        <div>
+          <form method="POST" action="{% url 'create_snack' %}">
+            {% csrf_token %}
+            <input type="submit" value="Create Snack" class = "btn btn-primary">
+            
+        </form>
         </div>
       </div>
     </div>
